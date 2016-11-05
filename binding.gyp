@@ -1,7 +1,7 @@
 {
     'targets': [
         {
-            'target_name': '<(module_name)',
+            'target_name': 'audio_mpg123',
             'win_delay_load_hook': 'true',
             'sources': [
                 'src/binding.cpp',
@@ -18,11 +18,11 @@
         {
             "target_name": "after_build",
             "type": "none",
-            "dependencies": [ "<(module_name)" ],
+            "dependencies": [ "audio_mpg123" ],
             "copies": [
                 {
-                    "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
-                    "destination": "<(module_path)"
+                    "files": [ "<(PRODUCT_DIR)/audio_mpg123.node" ],
+                    "destination": "./lib/"
                 }
             ]
         }
