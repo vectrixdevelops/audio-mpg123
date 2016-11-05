@@ -4,8 +4,7 @@
   "main": "./index.js",
   "description": "Pure binding for mpg123.",
   "scripts": {
-    "preinstall": "node ./scripts/check-pre-gyp",
-    "install": "node-pre-gyp install --fallback-to-build"
+    "postinstall": "node ./scripts/check-pre-gyp && node-pre-gyp install --fallback-to-build"
   },
   "binary": {
     "module_name": "audio_mpg123",
