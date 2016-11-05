@@ -1,1 +1,1 @@
-module.exports = require('bindings')('binding')
+module.exports = require('bindings')('audio_mpg123')

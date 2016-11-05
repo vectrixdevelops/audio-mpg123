@@ -149,6 +149,7 @@
             'dependencies': ['compat', 'out123' ],
             'include_dirs': [
                 'mpg123/src/libout123/modules',
+                'mpg123/src/libmpg123',
                 'config/<(OS)/<(target_arch)'
             ],
             'defines': [
@@ -161,6 +162,7 @@
             'direct_dependent_settings': {
                 'include_dirs': [
                     'mpg123/src/libout123/modules',
+                    'mpg123/src/libmpg123',
                     'config/<(OS)/<(target_arch)'
                 ]
             },

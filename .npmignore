@@ -1,0 +1,10 @@
+node_modules
+lib
+build
+test
+*.tgz
+npm-debug.log
+pnpm-debug.log
+.npmignore
+.gitignore
+.travis.yml

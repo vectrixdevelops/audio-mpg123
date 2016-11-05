@@ -9,6 +9,7 @@ git rm --cached <file>
 # Node GYP #
 ############
 /build
+/lib
 
 # Binding #
 ###########

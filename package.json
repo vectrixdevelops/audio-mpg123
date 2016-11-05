@@ -1,7 +1,19 @@
 {
   "name": "audio-mpg123",
   "version": "1.0.1",
+  "main": "./index.js",
   "description": "Pure binding for mpg123.",
+  "scripts": {
+    "preinstall": "node ./scripts/check-pre-gyp",
+    "install": "node-pre-gyp install --fallback-to-build"
+  },
+  "binary": {
+    "module_name": "audio_mpg123",
+    "module_path": "./lib/",
+    "remote_path": "{version}",
+    "package_name": "{module_name}-v{version}.tar.gz",
+    "host": "https://github.com/audiojs/audio-mpg123/releases/download/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/audiojs/audio-mpg123.git"
@@ -21,6 +33,7 @@
   "homepage": "https://github.com/audiojs/audio-mpg123#readme",
   "dependencies": {
     "bindings": "^1.2.1",
-    "nan": "2.2.1"
+    "nan": "2.2.1",
+    "node-pre-gyp": "^0.6.31"
   }
 }
