@@ -167,11 +167,6 @@ namespace {
 
         out123_handle *ao = out123_new();
 
-        long rate = 44100;
-        int channels = 2;
-        int encoding = MPG123_ENC_SIGNED_16;
-        int framesize = 1;
-
         if(!ao) {
             fprintf(stderr, "Failed to initialize output handle.\n");
             out123_del(ao);
