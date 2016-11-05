@@ -2,7 +2,7 @@
 
 > The backend implementation for the node version of audio-speaker.
 
-This is for the wrapper audio-speaker to use optionally when not wanting
+This is a wrapper for audio-speaker to use optisonally when not wanting
 browser implementation (to reduce size).
 
 ## Credits
