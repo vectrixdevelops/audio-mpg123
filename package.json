@@ -1,0 +1,25 @@
+{
+  "name": "audio-mpg123",
+  "version": "0.1.0",
+  "description": "Pure binding for mpg123.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/audiojs/audio-mpg123.git"
+  },
+  "keywords": [
+    "mpg123",
+    "audio",
+    "audiojs",
+    "binding",
+    "native"
+  ],
+  "author": "Connor Hartley (https://github.com/connorhartley)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/audiojs/audio-mpg123/issues"
+  },
+  "homepage": "https://github.com/audiojs/audio-mpg123#readme",
+  "dependencies": {
+    "nan": "2.2.1"
+  }
+}
