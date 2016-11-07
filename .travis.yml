@@ -18,9 +18,9 @@ env:
 install:
   - npm install -g npm
   - npm install
+  - npm run test
 script:
   - node -v
   - npm -v
-  - npm run test
 matrix:
   fast_finish: true
