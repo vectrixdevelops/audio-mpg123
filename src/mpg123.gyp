@@ -140,6 +140,22 @@
                         'mpg123/src/libmpg123',
                         'config/<(OS)/<(target_arch)'
                     ],
+                }],
+                ['mpg123_module=="dummy"', {
+                    'direct_dependent_settings': {
+                        'include_dirs': [
+                            'mpg123/src',
+                            'mpg123/src/compat',
+                            'mpg123/src/libmpg123',
+                            'config/<(OS)/<(target_arch)'
+                        ]
+                    },
+                    'include_dirs': [
+                        'mpg123/src',
+                        'mpg123/src/compat',
+                        'mpg123/src/libmpg123',
+                        'config/<(OS)/<(target_arch)'
+                    ],
                 }]
             ],
         },
