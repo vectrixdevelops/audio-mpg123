@@ -5,6 +5,12 @@
 This is a wrapper for audio-speaker to use optisonally when not wanting
 browser implementation (to reduce size).
 
+## Support
+
+Out123 version: v2
+
+Devices supported: Windows (ia32 and x64)[win32], Linux (x64)[alsa]
+
 ## Credits
 
 | ![connor][connor-avatar]      |
