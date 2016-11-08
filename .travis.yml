@@ -17,10 +17,13 @@ env:
   - CXX=g++-4.8
 install:
   - npm install -g npm
+  - npm install -g node-pre-gyp
   - npm install
-  - npm run test
+  - node-pre-gyp clean
+  - node-pre-gyp rebuild --mpg123-module=dummy
 script:
   - node -v
   - npm -v
+  - npm run test
 matrix:
   fast_finish: true
