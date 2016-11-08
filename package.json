@@ -1,6 +1,6 @@
 {
   "name": "audio-mpg123",
-  "version": "1.1.4",
+  "version": "1.2.0-0",
   "main": "./index.js",
   "description": "Pure binding for mpg123.",
   "scripts": {
