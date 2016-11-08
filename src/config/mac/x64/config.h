@@ -27,7 +27,7 @@
 /* #undef DEBUG */
 
 /* The default audio output module(s) to use */
-#define DEFAULT_OUTPUT_MODULE "coreaudio,openal"
+#define DEFAULT_OUTPUT_MODULE "coreaudio,openal,dummy"
 
 /* Define if building with dynamcally linked libmpg123 */
 #define DYNAMIC_BUILD 1
