@@ -29,8 +29,9 @@
  * This should be incremented at least each time a new symbol is added
  * to the header.
  */
-#define OUT123_API_VERSION 1
+#define OUT123_API_VERSION 2
 
+#ifndef MPG123_EXPORT
 /** Defines needed for MS Visual Studio(tm) DLL builds.
  * Every public function must be prefixed with MPG123_EXPORT. When building 
  * the DLL ensure to define BUILD_MPG123_DLL. This makes the function accessible
@@ -48,6 +49,7 @@
 #else
 /* Nothing on normal/UNIX builds */
 #define MPG123_EXPORT
+#endif
 #endif
 #endif
 
@@ -110,6 +112,11 @@ enum out123_parms
  * The value returned by out123_getparam() might be different if the audio
  * backend changed it (to be unique among clients, p.ex.).
  * TODO: The name provided here is used as prefix in diagnostic messages. */
+,	OUT123_BINDIR /**< string, path to a program binary directory to use
+ * as starting point in the search for the output module directory
+ * (e.g. ../lib/mpg123 or ./plugins). The environment variable MPG123_MODDIR
+ * is always tried first and the in-built installation path last.
+ */
 };
 
 /** Flags to tune out123 behaviour */
@@ -576,8 +583,6 @@ int out123_getformat( out123_handle *ao
 #ifdef __cplusplus
 }
 #endif
-
-#undef MPG123_EXPORT
 
 #endif
 
