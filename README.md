@@ -35,11 +35,13 @@ you will need build tools to build it yourself.
 
 ## Credits
 
-| ![connor][connor-avatar]      |
-| :---------------------------: |
-| [Connor Hartley][connor-link] |
+| ![connor][connor-avatar]      | ![jamen][jamen-avatar]       |
+| :---------------------------: | :---------------------------: |
+| [Connor Hartley][connor-link] | [Jamen Marz][jamen-link]      |
 
   [speaker-link]: https://github.com/audiojs/audio-speaker
 
   [connor-avatar]: https://avatars0.githubusercontent.com/u/12867785?v=3&s=125
   [connor-link]: https://github.com/connorhartley
+  [jamen-avatar]: https://avatars.githubusercontent.com/u/6251703?v=3&s=125
+  [jamen-link]: https://github.com/jamen
