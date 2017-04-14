@@ -1,5 +1,7 @@
 # audio-mpg123
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/audiojs/audio-mpg123.svg)](https://greenkeeper.io/)
+
 > A native node binding to write raw PCM data to an OS driver.
 
 This is a pure native node binding for the library mpg123. This is used particularly with audio-speaker
