@@ -4,7 +4,7 @@
             'target_name': 'audio_mpg123',
             'win_delay_load_hook': 'true',
             'sources': [
-                'src/binding.cpp',
+                'src/mpg123-wrapper.cpp',
                 'src/util/getopt.c'
             ],
             'include_dirs': [
