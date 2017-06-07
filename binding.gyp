@@ -63,7 +63,7 @@
             'target_name': 'audio_mpg123',
             'win_delay_load_hook': 'true',
             'sources': [
-                'src/audio-mpg123.cpp'
+                'src/audio-mpg123.cc'
             ],
             'include_dirs': [
                 "<!@(node -p \"require('node-addon-api').include\")",

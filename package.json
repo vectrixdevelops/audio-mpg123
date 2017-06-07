@@ -4,7 +4,7 @@
   "main": "./index.js",
   "description": "Pure binding for mpg123.",
   "scripts": {
-    "test": "tape ./tests/check.js",
+    "test": "node test",
     "install": "node ./scripts/check-pre-gyp && node-pre-gyp install --fallback-to-build"
   },
   "binary": {
