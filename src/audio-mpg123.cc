@@ -7,27 +7,26 @@
 namespace audio_mpg123 {
 
   out123_handle* unwrap_handle(napi_env env, napi_value input) {
-    void *js_pointer;
-    napi_get_value_external(env, input, &js_pointer);
-    out123_handle *ao = (out123_handle *) js_pointer;
-    return ao;
+    void* ao;
+    napi_get_value_external(env, input, &ao);
+    return (out123_handle*) ao;
   }
 
   napi_value Create (napi_env env, napi_callback_info info) {
     napi_value result;
 
     // Create out123 handle
-    out123_handle *ao = out123_new();
+    out123_handle* ao = out123_new();
 
-    // Return false on failure
     if (!ao || out123_open(ao, NULL, NULL) != OUT123_OK) {
+      // Return false on failure
       out123_del(ao); 
       napi_get_boolean(env, false, &result);
-      return result;
+    } else {
+      // Return handle on success
+      napi_create_external(env, ao, nullptr, nullptr, &result);
     }
 
-    // Return handle on success
-    napi_create_external(env, ao, nullptr, nullptr, &result);
     return result;
   }
   
@@ -39,7 +38,7 @@ namespace audio_mpg123 {
     napi_value result;
 
     // Get handle
-    out123_handle *ao = unwrap_handle(env, argv[0]);
+    out123_handle* ao = unwrap_handle(env, argv[0]);
 
     // Get rate, channels, and format
     int32_t rate; napi_get_value_int32(env, argv[1], &rate);
@@ -66,8 +65,9 @@ namespace audio_mpg123 {
     napi_value result;
 
     // Get handle
-    out123_handle *ao = unwrap_handle(env, argv[0]);
-    
+    out123_handle* ao = unwrap_handle(env, argv[0]);
+   
+    // Close out123 handle
     if (ao) {
       out123_drop(ao);
       out123_del(ao);
@@ -78,15 +78,88 @@ namespace audio_mpg123 {
 
     return result;
   }
+
+  struct write_req {
+    napi_async_work work;
+    out123_handle* ao;
+    unsigned char* buffer;
+    int len;
+    int written;
+    napi_value callback;
+  };
+
+  void write_async (napi_env env, void* wreq) {
+    write_req* req = reinterpret_cast<write_req*>(wreq);
+    req->written = out123_play(req->ao, req->buffer, req->len);
+    return;
+  }
+
+  void write_after (napi_env env, napi_status status, void* wreq) {
+    write_req* req = reinterpret_cast<write_req*>(wreq);
+
+    napi_value call_argv[2];
+    
+    // Set err to null
+    napi_get_null(env, &call_argv[0]);
+    
+    // Set written
+    napi_create_number(env, req->written, &call_argv[1]);
+
+    // Do callback and finish work
+    napi_make_callback(env, nullptr, req->callback, 2, call_argv, nullptr);
   
+    return;
+  }
+
   napi_value Write (napi_env env, napi_callback_info info) {
-  
+    size_t argc = 4;
+    napi_value argv[4];
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr); 
+
+    // Buffer argument
+    void* arraybuffer_data;
+    size_t arraybuffer_length;
+    napi_get_arraybuffer_info(env, argv[1], &arraybuffer_data, &arraybuffer_length);
+    unsigned char* buffer = reinterpret_cast<unsigned char*>(arraybuffer_data);
+
+    // Length argument
+    int32_t length;
+    napi_get_value_int32(env, argv[2], &length);
+
+    // Create async work data
+    write_req* req = new write_req;
+    req->ao = unwrap_handle(env, argv[0]);
+    req->buffer = buffer;
+    req->len = length;
+    req->written = 0;
+    req->callback = argv[3];
+
+    // Start async work
+    napi_async_work work;
+    napi_create_async_work(env, write_async, write_after, req, &work);
+    napi_queue_async_work(env, work);
+
     return nullptr;
   }
  
   napi_value Flush (napi_env env, napi_callback_info info) {
-  
-   return  nullptr;
+    size_t argc = 1;
+    napi_value argv[1];
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr); 
+
+    napi_value result;
+
+    // Get handle
+    out123_handle* ao = unwrap_handle(env, argv[0]);
+
+    if (ao) {
+      out123_drain(ao);
+      napi_get_boolean(env, true, &result);
+    } else {
+      napi_get_boolean(env, false, &result);
+    }
+    
+    return  result;
   }
 
   void Init(napi_env env, napi_value exports, napi_value module, void* priv) {
