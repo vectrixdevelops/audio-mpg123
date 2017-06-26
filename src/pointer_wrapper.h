@@ -1,7 +1,7 @@
 #include <nan.h>
 
 inline static void wrap_pointer_cb(char *data, void *hint) {
-    fprintf(stderr, "Wrapped pointer was garbage collected. \n");
+    // fprintf(stderr, "Wrapped pointer was garbage collected. \n");
 }
 
 inline static v8::Local<v8::Value> WrapPointer(void *ptr, size_t length) {
