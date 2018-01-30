@@ -1,3 +1,6 @@
 [submodule "src/mpg123"]
 	path = src/mpg123
 	url = https://github.com/audiojs/mpg123
+[submodule "deps/libao"]
+	path = deps/libao
+	url = https://git.xiph.org/libao.git
