@@ -3,8 +3,6 @@ const binding = require('bindings')('audio-speaker-native')
 const parseFormat = require('audio-format').parse
 const convert = require('pcm-convert')
 
-console.log(binding)
-
 module.exports = (options = {}) => {
   options = Object.assign({
     format: 'mono 44100 float32',
@@ -18,9 +16,6 @@ module.exports = (options = {}) => {
   return function write (audioBuffer, done) {
     if (!audioBuffer) binding.close(ao)
     const buffer = convert(audioBuffer, 'float32 interleaved').buffer
-
-    binding.write(ao, buffer, () => {
-      console.log('yeeted')
-    })
+    binding.write(ao, buffer, done)
   }
 }
