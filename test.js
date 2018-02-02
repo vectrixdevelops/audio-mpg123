@@ -7,4 +7,6 @@ const buffer = audioBufferFrom(lenaBuffer)
 
 const write = speaker()
 
-write(buffer)
+write(buffer, () => {
+  console.log("yeet")
+})
