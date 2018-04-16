@@ -18,7 +18,7 @@
 #include <stddef.h>
 
 /* Common audio encoding specification, including a macro for getting
- *  size of encodined samples in bytes. Said macro is still hardcoded
+ *  size of encoded samples in bytes. Said macro is still hardcoded
  *  into out123_encsize(). Relying on this one may help an old program
  *  know sizes of encodings added to fmt123.h later on.
  *  If you don't care, just use the macro.
@@ -33,11 +33,11 @@
 
 #ifndef MPG123_EXPORT
 /** Defines needed for MS Visual Studio(tm) DLL builds.
- * Every public function must be prefixed with MPG123_EXPORT. When building 
+ * Every public function must be prefixed with MPG123_EXPORT. When building
  * the DLL ensure to define BUILD_MPG123_DLL. This makes the function accessible
  * for clients and includes it in the import library which is created together
  * with the DLL. When consuming the DLL ensure to define LINK_MPG123_DLL which
- * imports the functions from the DLL. 
+ * imports the functions from the DLL.
  */
 #ifdef BUILD_MPG123_DLL
 /* The dll exports. */
@@ -133,7 +133,7 @@ enum out123_flags
  *  functions.
  *  Note that this flag is meaningless when the optional buffer is employed,
  *  There, your program will always block until the buffer completely took
- *  over the data given to it via out123_play(), unless a communcation error
+ *  over the data given to it via out123_play(), unless a communication error
  *  arises.
  */
 };
@@ -251,7 +251,7 @@ const char* out123_plain_strerror(int errcode);
 MPG123_EXPORT
 int out123_set_buffer(out123_handle *ao, size_t buffer_bytes);
 
-/** Set a specific parameter, for a specific out123_handle, using a parameter 
+/** Set a specific parameter, for a specific out123_handle, using a parameter
  *  code chosen from the out123_parms enumeration, to the specified value.
  *  The parameters usually only change what happens on next out123_open, not
  *  incfluencing running operation.
@@ -503,7 +503,7 @@ void out123_stop(out123_handle *ao);
  *  Also note that it is no accident that the buffer parameter is not marked
  *  as constant. Some output drivers might need to do things like swap
  *  byte order. This is done in-place instead of wasting memory on yet
- *  another copy. 
+ *  another copy.
  * \param ao handle
  * \param buffer pointer to raw audio data to be played
  * \param bytes number of bytes to read from the buffer
@@ -585,4 +585,3 @@ int out123_getformat( out123_handle *ao
 #endif
 
 #endif
-

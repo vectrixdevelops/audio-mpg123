@@ -6,7 +6,7 @@
 /* #undef ABI_ALIGN_FUN */
 
 /* Define to use proper rounding. */
-/* #undef ACCURATE_ROUNDING */
+#define ACCURATE_ROUNDING 1
 
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
@@ -77,23 +77,35 @@
 /* Define to 1 if you have the <AudioUnit/AudioUnit.h> header file. */
 /* #undef HAVE_AUDIOUNIT_AUDIOUNIT_H */
 
+/* Define to 1 if you have the <byteswap.h> header file. */
+#define HAVE_BYTESWAP_H 1
+
 /* Define to 1 if you have the <CoreServices/CoreServices.h> header file. */
 /* #undef HAVE_CORESERVICES_CORESERVICES_H */
 
 /* Define to 1 if you have the <CUlib.h> header file. */
 /* #undef HAVE_CULIB_H */
 
+/* Define to 1 if you have the <dirent.h> header file. */
+/* #undef HAVE_DIRENT_H */
+
+/* Define to 1 if you have the `dlclose' function. */
+/* #undef HAVE_DLCLOSE */
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
-#define HAVE_DLFCN_H 1
+/* #undef HAVE_DLFCN_H */
+
+/* Define to 1 if you have the `dlopen' function. */
+/* #undef HAVE_DLOPEN */
+
+/* Define to 1 if you have the `dlsym' function. */
+/* #undef HAVE_DLSYM */
 
 /* Define if getaddrinfo accepts the AI_ADDRCONFIG flag */
 #define HAVE_GAI_ADDRCONFIG 1
 
 /* Define to 1 if you have the `getaddrinfo' function. */
 #define HAVE_GETADDRINFO 1
-
-/* Define to 1 if you have the `getpagesize' function. */
-#define HAVE_GETPAGESIZE 1
 
 /* Define to 1 if you have the `getuid' function. */
 #define HAVE_GETUID 1
@@ -119,9 +131,6 @@
 /* Define to 1 if you have the <locale.h> header file. */
 #define HAVE_LOCALE_H 1
 
-/* Define if libltdl is available */
-#define HAVE_LTDL 1
-
 /* Define to 1 if you have the <machine/soundcard.h> header file. */
 /* #undef HAVE_MACHINE_SOUNDCARD_H */
 
@@ -131,7 +140,7 @@
 /* Define to 1 if you have the `mkfifo' function. */
 #define HAVE_MKFIFO 1
 
-/* Define to 1 if you have a working `mmap' system call. */
+/* Define to 1 if you have the `mmap' function. */
 #define HAVE_MMAP 1
 
 /* Define to 1 if you have the <netdb.h> header file. */
@@ -176,6 +185,18 @@
 /* Define to 1 if you have the `setuid' function. */
 #define HAVE_SETUID 1
 
+/* Define to 1 if you have the `shmat' function. */
+/* #undef HAVE_SHMAT */
+
+/* Define to 1 if you have the `shmctl' function. */
+/* #undef HAVE_SHMCTL */
+
+/* Define to 1 if you have the `shmdt' function. */
+/* #undef HAVE_SHMDT */
+
+/* Define to 1 if you have the `shmget' function. */
+/* #undef HAVE_SHMGET */
+
 /* Define to 1 if you have the <signal.h> header file. */
 #define HAVE_SIGNAL_H 1
 
@@ -195,7 +216,7 @@
 #define HAVE_STRERROR 1
 
 /* Define to 1 if you have the <strings.h> header file. */
-#define HAVE_STRINGS_H 1
+/* #undef HAVE_STRINGS_H */
 
 /* Define to 1 if you have the <string.h> header file. */
 #define HAVE_STRING_H 1
@@ -212,6 +233,9 @@
 /* Define to 1 if you have the <sys/ioctl.h> header file. */
 #define HAVE_SYS_IOCTL_H 1
 
+/* Define to 1 if you have the <sys/ipc.h> header file. */
+/* #undef HAVE_SYS_IPC_H */
+
 /* Define to 1 if you have the <sys/param.h> header file. */
 #define HAVE_SYS_PARAM_H 1
 
@@ -219,7 +243,10 @@
 #define HAVE_SYS_RESOURCE_H 1
 
 /* Define to 1 if you have the <sys/select.h> header file. */
-#define HAVE_SYS_SELECT_H 1
+/* #undef HAVE_SYS_SELECT_H */
+
+/* Define to 1 if you have the <sys/shm.h> header file. */
+/* #undef HAVE_SYS_SHM_H */
 
 /* Define to 1 if you have the <sys/signal.h> header file. */
 #define HAVE_SYS_SIGNAL_H 1
@@ -234,7 +261,7 @@
 #define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/time.h> header file. */
-#define HAVE_SYS_TIME_H 1
+/* #undef HAVE_SYS_TIME_H */
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
@@ -267,11 +294,17 @@
    functions. */
 #define LFS_ALIAS_BITS 64
 
+/* Define to the extension used for runtime loadable modules, say, ".so". */
+/* #undef LT_MODULE_EXT */
+
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define LT_OBJDIR ".libs/"
 
-/* The suffix for module files. */
-#define MODULE_FILE_SUFFIX ".la"
+/* Define to the shared library suffix, say, ".dylib". */
+/* #undef LT_SHARED_EXT */
+
+/* Define to the shared archive member specification, say "(shr.o)". */
+/* #undef LT_SHARED_LIB_MEMBER */
 
 /* Define if network support is enabled. */
 #define NETWORK 1
@@ -316,6 +349,9 @@
 /* Define to disable layer III. */
 /* #undef NO_LAYER3 */
 
+/* Define to disable analyzer info. */
+/* #undef NO_MOREINFO */
+
 /* Define to disable ntom resampling. */
 /* #undef NO_NTOM */
 
@@ -341,7 +377,7 @@
 #define PACKAGE_NAME "mpg123"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "mpg123 1.24.0"
+#define PACKAGE_STRING "mpg123 1.26.0"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "mpg123"
@@ -350,7 +386,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.24.0"
+#define PACKAGE_VERSION "1.26.0"
 
 /* Define if portaudio v18 API is wanted. */
 /* #undef PORTAUDIO18 */
@@ -373,6 +409,9 @@
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
+/* Define to not duplicate some code for likely cases in libsyn123. */
+/* #undef SYN123_NO_CASES */
+
 /* Define if modules are enabled */
 #define USE_MODULES 1
 
@@ -383,7 +422,7 @@
 /* #undef USE_YASM_FOR_AVX */
 
 /* Version number of package */
-#define VERSION "1.24.0"
+#define VERSION "1.26.0"
 
 /* Define to use Win32 named pipes */
 /* #undef WANT_WIN32_FIFO */
@@ -392,7 +431,7 @@
 /* #undef WANT_WIN32_SOCKETS */
 
 /* Define to use Unicode for Windows */
-/* #undef WANT_WIN32_UNICODE */
+#define WANT_WIN32_UNICODE 1
 
 /* WinXP and above for ipv6 */
 /* #undef WINVER */
