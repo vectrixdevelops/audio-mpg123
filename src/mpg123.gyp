@@ -1,6 +1,6 @@
 {
     'variables': {
-        'target_arch%': 'ia32',
+        'target_arch%': 'x64',
         'conditions': [
             ['OS=="mac"', {
                 'mpg123_module%': 'coreaudio'
@@ -71,6 +71,7 @@
                 ]
             },
             'sources': [
+                'mpg123/src/libout123/hextxt.c',
                 'mpg123/src/libout123/legacy_module.c',
                 'mpg123/src/libout123/libout123.c',
                 'mpg123/src/libout123/sfifo.c',
@@ -115,6 +116,12 @@
                             'mpg123/src/compat',
                             'mpg123/src/libmpg123',
                             'config/<(OS)/<(target_arch)'
+                        ]
+                    },
+                    'link_settings': {
+                        'libraries': [
+                            '-lShlwapi.lib',
+                            '-lAvrt.lib'
                         ]
                     },
                     'include_dirs': [

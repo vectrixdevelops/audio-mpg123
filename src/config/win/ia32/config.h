@@ -108,7 +108,7 @@
 #define HAVE_GETADDRINFO 1
 
 /* Define to 1 if you have the `getuid' function. */
-#define HAVE_GETUID 1
+/* #undef HAVE_GETUID */
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
@@ -183,7 +183,7 @@
 #define HAVE_SETPRIORITY 1
 
 /* Define to 1 if you have the `setuid' function. */
-#define HAVE_SETUID 1
+/* #undef HAVE_SETUID */
 
 /* Define to 1 if you have the `shmat' function. */
 /* #undef HAVE_SHMAT */
@@ -270,7 +270,7 @@
 #define HAVE_SYS_WAIT_H 1
 
 /* Define this if you have the POSIX termios library */
-#define HAVE_TERMIOS 1
+/* #undef HAVE_TERMIOS */
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
@@ -500,3 +500,12 @@
 
 /* Define to `unsigned long' if <sys/types.h> does not define. */
 /* #undef uintptr_t */
+
+/* ADDITIONAL */
+
+#ifdef _MSC_VER 
+
+#define strncasecmp _strnicmp
+#define strcasecmp _stricmp
+
+#endif
