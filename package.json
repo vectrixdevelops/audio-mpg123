@@ -36,6 +36,6 @@
     "node-pre-gyp": "^0.6.31"
   },
   "devDependencies": {
-    "tape": "^4.6.2"
+    "tape": "^4.9.2"
   }
 }
